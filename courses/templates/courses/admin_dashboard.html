@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin Dashboard</title>
+</head>
+<body>
+    <h1>Admin Dashboard</h1>
+    {% for course in courses %}
+        <h2>{{ course.title }}</h2>
+        <ul>
+            {% for enrollment in course.enrollment_set.all %}
+                <li>{{ enrollment.student.name }} ({{ enrollment.student.email }})</li>
+            {% empty %}
+                <li>No students enrolled yet.</li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</body>
+</html>
